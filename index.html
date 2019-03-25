@@ -9,44 +9,73 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <title>Photons</title>
 </head>
 
 <body>
+  <!-- Image and text -->
+  <nav class="navbar  bg-dark justify-content-md-center">
+    <a class="navbar-brand" href="index.html">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Port_Authority_Allegheny_County_Logo.svg"
+        height="50" class="d-inline-block align-top" alt="">
+
+    </a>
+  </nav>
+
   <div class="container" style="align-content:center; margin: 5%">
     <div class="card">
       <div class="card-body">
         <form>
           <h1 style="text-align: center">Garage thermal setpoint</h1>
           <div class="form-group row">
-            <div class="form-check form-check-inline" style="margin-left: 1.2% ">
+              <div class="form-check form-check-inline" style="margin-left: 1.2% ">
                 <i class="fas fa-thermometer-half"></i>
-                .Metrics:
+                &nbsp;Metrics:
+              </div>
+              <div class="form-check form-check-inline">
+  
+                <input class="form-check-input" type="radio" name="metrics" id="fahrenheit" value="fahrenheit" checked>
+                <label class="form-check-label" for="fahrenheit">
+                  °F
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="metrics" id="celcius" value="celcius">
+                <label class="form-check-label" for="exampleRadios2">
+                  °C
+                </label>
+              </div>
             </div>
-            <div class="form-check form-check-inline">
-              
-              <input class="form-check-input" type="radio" name="metrics" id="fahrenheit" value="fahrenheit" checked>
-              <label class="form-check-label" for="fahrenheit">
-                °F 
-              </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="metrics" id="celcius" value="celcius">
-              <label class="form-check-label" for="exampleRadios2">
-                °C
-              </label>
-            </div>
+          <div class="form-group row" style="margin:0%">
+            <i class="fas fa-calendar-day"></i>
+            <label class="col-sm-1" for="month">Month</label>
+            <select id="month" class="form-control col-sm-2">
+              <option>January</option>
+              <option>February</option>
+              <option selected>March</option>
+              <option>April</option>
+              <option>May</option>
+              <option>June</option>
+              <option>July</option>
+              <option>August</option>
+              <option>September</option>
+              <option>October</option>
+              <option>November</option>
+              <option>December</option>
+            </select>
           </div>
+          
           <div class="form-group row">
-              <label for="indoorTemperature" class="col-sm-2 col-form-label">Setpoint temperature</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" id="indoorTemperature" placeholder="Enter valid temperature">
-              </div>
-              <label for="outdoorTemperature" class="col-sm-2 col-form-label">Outside temperature</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" id="outdoorTemperature" placeholder="Enter valid temperature">
-              </div>
+            <label for="indoorTemperature" class="col-sm-2 col-form-label">Setpoint temperature</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="indoorTemperature" placeholder="Enter temperature">
+            </div>
+            <label for="outdoorTemperature" class="col-sm-2 col-form-label">Outside temperature</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="outdoorTemperature" placeholder="Enter temperature">
+            </div>
           </div>
           <div class="row justify-content-md-center">
             <button type="submit" class="btn btn-primary">Calculate</button>
