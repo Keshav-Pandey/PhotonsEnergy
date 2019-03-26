@@ -31,7 +31,7 @@
         <form>
           <h1 style="text-align: center">Garage thermal setpoint</h1>
           <div class="form-group row">
-              <div class="form-check form-check-inline" style="margin-left: 1.2% ">
+              <div class="form-check form-check-inline" style="margin-left: 2.5% ">
                 <i class="fas fa-thermometer-half"></i>
                 &nbsp;Metrics:
               </div>
@@ -48,11 +48,11 @@
                   °C
                 </label>
               </div>
-            </div>
-          <div class="form-group row" style="margin:0%">
+          </div>
+          <div class="form-group row" style="margin:1%">
             <i class="fas fa-calendar-day"></i>
             <label class="col-sm-1" for="month">Month</label>
-            <select id="month" class="form-control col-sm-2">
+            <select id="month" class="form-control col-sm-4">
               <option>January</option>
               <option>February</option>
               <option selected>March</option>
@@ -67,6 +67,18 @@
               <option>December</option>
             </select>
           </div>
+
+          <div class="form-group row" style="margin:1%">
+              <i class="fas fa-warehouse"></i>
+              <label class="col-sm-1" for="garage">Garage</label>
+              <select id="garage" class="form-control col-sm-4">
+                <option selected>Garage 1</option>
+                <option>Garage 2</option>
+                <option>Garage 3</option>
+                <option>Garage 4</option>
+              </select>
+            </div>
+            
           
           <div class="form-group row">
             <label for="indoorTemperature" class="col-sm-2 col-form-label">Setpoint temperature</label>
@@ -76,7 +88,10 @@
             <label for="outdoorTemperature" class="col-sm-2 col-form-label">Outside temperature</label>
             <div class="col-sm-3">
               <input type="text" class="form-control" id="outdoorTemperature" placeholder="Enter temperature">
-              <input type="button" class="btn btn-primary" value="Get current temp" onclick="getTemp()" />
+              
+            </div>
+            <div class="col-sm-1">
+                <input type="button" class="btn btn-warning" value="Current temperature" onclick="getTemp()" />
             </div>
           </div>
           <div class="row justify-content-md-center">

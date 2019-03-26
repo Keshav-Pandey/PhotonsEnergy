@@ -32,13 +32,13 @@
                     Indoor Temperature:
                 </div>
                 <div class="inline">
-                    <h1>30°C</h1>
+                    <h1 id="indoorTemp">30°F</h1>
                 </div>
                 <div class="inline">
                     Outdoor Temperature:
                 </div>
                 <div class="inline">
-                    <h1>23°C</h1>
+                    <h1 id="outdoorTemp">23°F</h1>
                 </div>
                 <div class="inline">
                     <h4>Comfort Level:</h4>
@@ -51,15 +51,18 @@
             </div>
             <div class="col border">
                 <h4>Savings:</h4>
-                <h5>Having this setting will cost you $2300.</h5>
-                <h6 style="color: green">This will result in a savings of $10000 per year.</h6>
+                <h5>Having this setting will cost you $2300.</h5>                
+                <h6 id = "monthSavings" style="color: green">This will result in a savings of $1000 for this month.</h6>
             </div>
         </div>
-        <div class="row">
-            <h1>Here is the analysis of past year's record</h1>
-            <img src="https://2aih25gkk2pi65s8wfa8kzvi-wpengine.netdna-ssl.com/ged/files/2017/02/Line-graph-e1487040553537.jpg"
-                    class="img-fluid" alt="Responsive image">
-        </div>
+
+            <div class="row justify-content-md-center">
+                <h1>Impact of keeping this indoor temperature for all months:</h1>
+                <h4 id="yearSavings" style="color:green">This will result in a savings of $10000 per year</h4>
+                <img id="totalImpact"
+                    src="https://2aih25gkk2pi65s8wfa8kzvi-wpengine.netdna-ssl.com/ged/files/2017/02/Line-graph-e1487040553537.jpg">
+            </div>
+        
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
