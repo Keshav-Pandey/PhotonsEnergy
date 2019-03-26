@@ -148,21 +148,11 @@
         function getData() {
             var d;
             var g = getParameterByName("g");
-            var gar;
-            if(g == "1"){
-                gar = gar1[m];
-            } else if(g == "2"){
-                gar = gar2[m];
-            } else if(g == "3"){
-                gar = gar3[m];
-            } else if(g == "4"){
-                gar = gar4[m];
-            }
             //if garage 1
             if (g == "1") {
                 d = [
                     ['Month', 'BTU', 'Estimated BTU'],
-                    ['January', gar["BTU"], calc(avgTemps["Jan"])],
+                    ['January', 3902000000, calc(avgTemps["Jan"])],
                     ['February', 2614000000, calc(avgTemps["Feb"])],
                     ['March', 1081000000, calc(avgTemps["Mar"])],
                     ['April', 1698000000, calc(avgTemps["Apr"])],
@@ -254,7 +244,7 @@
         function drawChart() {
             var d = getData();
             var data = google.visualization.arrayToDataTable(d);
-            var d2 = getPriceData();
+            // var d2 = getPriceData();
             // var data2 = google.visualization.arrayToDataTable(d2);
             var options = {
                 title: 'Gas Usage',
