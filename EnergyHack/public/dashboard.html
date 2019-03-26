@@ -288,13 +288,13 @@
                 A = 111039.9164;
             } else if (g == "2") {
                 Qdot = 79923.71;
-                A = 111039.9164;
+                A = 194246.5383;
             } else if (g == "3") {
                 Qdot = 58219.51;
-                A = 111039.9164;
+                A = 151557.4647;
             } else if (g == "4") {
                 Qdot = 77157.75;
-                A = 111039.9164;
+                A = 164746.8129;
             }
             deltaT = t2 - t1;
             if (deltaT < 0)
@@ -322,11 +322,14 @@
             } else if(g == "4"){
                 gar = gar4[m];
             }
+            var oldPrice = gar["Amount"];
+            var newPrice = calcPrice(avgTemps[m],gar["Rate"]);
             //if garage 1
             var d = [
                 ['Month', 'MBTU' , 'Estimated MBTU', 'Price ($)', 'Estimated Price ($)'],
-                [m,  gar["BTU"]/1000000, calc(avgTemps[m])/1000000, gar["Amount"], calcPrice(avgTemps[m],gar["Rate"])]
+                [m,  gar["BTU"]/1000000, calc(avgTemps[m])/1000000, oldPrice, newPrice]
             ];
+            // updateCostEstimes(oldPrice, newPrice);
             return d;
         }
 
