@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="col-6 border">
-
+                <div id="chart_div0" style="width: 100%; height: 400px;"></div>
             </div>
             <div class="col border">
                 <h4>Savings:</h4>
@@ -85,7 +85,7 @@
     <!--Chart script-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.load('current', { 'packages': ['corechart','bar'] });
         google.charts.setOnLoadCallback(drawChart);
 
         
@@ -170,13 +170,28 @@
             }
             return d;
         }
+
+        function drawMonthChart() {
+        var data = google.visualization.arrayToDataTable(getMonthData());
+
+        var options = {
+          chart: {
+            title: 'Montly Savings',
+            subtitle: 'Savings on gas usage for the month',
+          },
+          bars: 'vertical' // Required for Material Bar Charts.
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart_div0'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+
         function drawChart() {
             var d = getData();
-
             var data = google.visualization.arrayToDataTable(d);
-
-
-
+            // var d2;
+            // var data2 = google.visualization.arrayToDataTable(d2);
             var options = {
                 title: 'Gas Usage',
                 hAxis: { title: 'Month', titleTextStyle: { color: '#333' } },
@@ -187,6 +202,7 @@
             var chart1 = new google.visualization.AreaChart(document.getElementById('chart_div1'));
             chart.draw(data, options);
             chart1.draw(data, options);
+            drawMonthChart();
         }
         function calc(t1) {
             var t2 = Number(getParameterByName("t2"));
