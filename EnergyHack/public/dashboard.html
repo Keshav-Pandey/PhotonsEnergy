@@ -54,8 +54,8 @@
         </div>
 
         <div class="row justify-content-md-center">
-            <h1>Impact of keeping this indoor temperature for all months:</h1>
-            <h4 id="yearSavings" style="color:green">This will result in a savings of $10000 per year</h4>
+            <h1>Impact of keeping this indoor temperature throughout the year:</h1>
+            <h4 id="yearSavings" style="color:green">This will result in <span id="yearly cost factor">a savings</span> of $<span id="yearly cost difference">10000</span> per year</h4>
             <div class="container" style="align-content: center; margin-left:10%">
                 <div class="form-check-inline">
                     <div class="col border">
@@ -90,8 +90,8 @@
             var costFactorSpan = document.getElementById("cost factor");
             var costDiffSpan = document.getElementById("cost difference");
 
-            newCostSpan.innerText = newPrice;
-            costDiffSpan.innerText = Math.abs(oldPrice - newPrice);
+            newCostSpan.innerText = Math.round(newPrice * 100) / 100;
+            costDiffSpan.innerText = Math.round(Math.abs(oldPrice - newPrice) * 100) / 100;
 
             if (oldPrice < newPrice) {
                 costFactorSpan.innerText = "an excess expenditure";
@@ -100,6 +100,21 @@
                 costFactorSpan.innerText = "a savings";
                 costDifferenceHeader.style.color = "green";
             }
+        }
+        
+        function updateYearlyEstimates(savings) {
+            var yearlySavings = document.getElementById("yearSavings");
+            var yearlyCostFactor = document.getElementById("yearly cost factor");
+            var yearlyCostDifference = document.getElementById("yearly cost difference");
+            if (savings < 0) {
+                yearlySavings.style.color = "red";
+                yearlyCostFactor.innerText = "an excess expenditure"
+            } else {
+                yearlySavings.style.color = "green";
+                yearlyCostFactor.innerText = "a savings";
+            }
+            yearlyCostDifference.innerText = Math.round(Math.abs(savings) * 100) / 100;
+            
         }
         // https://photon-energy-hack.herokuapp.com/dashboard.html?metrics=fahrenheit&m=Mar&g=1&t2=75&t1=36
         function loadData() {
