@@ -48,9 +48,9 @@
             <div id="chart_div0" style="width: 100%; height: 400px;"></div>
         </div>
         <div class="col border">
-            <h4>Savings:</h4>
-            <h5>Having this setting will cost you $2300.</h5>
-            <h6 id = "monthSavings" style="color: green">This will result in a savings of $1000 for this month.</h6>
+            <h4>Cost Estimates:</h4>
+            <h5>Having this setting will cost you $<span id="new cost">2300</span>.</h5>
+            <h6 id = "monthSavings" style="color: green">This will result in <span id="cost factor">a savings</span> of $<span id="cost difference">1000</span> for this month.</h6>
         </div>
 
         <div class="row justify-content-md-center">
@@ -82,6 +82,25 @@
             crossorigin="anonymous"></script>
     <!--Loading parameters-->
     <script type="text/javascript">
+        function updateCostEstimes(oldPrice, newPrice) {
+
+
+            var costDifferenceHeader = document.getElementById("monthSavings");
+            var newCostSpan = document.getElementById("new cost");
+            var costFactorSpan = document.getElementById("cost factor");
+            var costDiffSpan = document.getElementById("cost difference");
+
+            newCostSpan.innerText = newPrice;
+            costDiffSpan.innerText = Math.abs(oldPrice - newPrice);
+
+            if (oldPrice < newPrice) {
+                costFactorSpan.innerText = "an excess expenditure";
+                costDifferenceHeader.style.color = "red";
+            } else {
+                costFactorSpan.innerText = "a savings";
+                costDifferenceHeader.style.color = "green";
+            }
+        }
         // https://photon-energy-hack.herokuapp.com/dashboard.html?metrics=fahrenheit&m=Mar&g=1&t2=75&t1=36
         function loadData() {
             var metric = '°';
