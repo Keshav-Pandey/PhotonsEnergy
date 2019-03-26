@@ -54,8 +54,8 @@
         </div>
 
         <div class="row justify-content-md-center">
-            <h1>Impact of keeping this indoor temperature for all months:</h1>
-            <h4 id="yearSavings" style="color:green">This will result in a savings of $10000 per year</h4>
+            <h1>Impact of keeping this indoor temperature throughout the year:</h1>
+            <h4 id="yearSavings" style="color:green">This will result in <span id="yearly cost factor">a savings</span> of $<span id="yearly cost difference">10000</span> per year</h4>
             <div class="container" style="align-content: center; margin-left:10%">
                 <div class="form-check-inline">
                     <div class="col border">
@@ -90,8 +90,8 @@
             var costFactorSpan = document.getElementById("cost factor");
             var costDiffSpan = document.getElementById("cost difference");
 
-            newCostSpan.innerText = newPrice;
-            costDiffSpan.innerText = Math.abs(oldPrice - newPrice);
+            newCostSpan.innerText = Math.round(newPrice * 100) / 100;
+            costDiffSpan.innerText = Math.round(Math.abs(oldPrice - newPrice) * 100) / 100;
 
             if (oldPrice < newPrice) {
                 costFactorSpan.innerText = "an excess expenditure";
@@ -100,6 +100,21 @@
                 costFactorSpan.innerText = "a savings";
                 costDifferenceHeader.style.color = "green";
             }
+        }
+        
+        function updateYearlyEstimates(savings) {
+            var yearlySavings = document.getElementById("yearSavings");
+            var yearlyCostFactor = document.getElementById("yearly cost factor");
+            var yearlyCostDifference = document.getElementById("yearly cost difference");
+            if (savings < 0) {
+                yearlySavings.style.color = "red";
+                yearlyCostFactor.innerText = "an excess expenditure"
+            } else {
+                yearlySavings.style.color = "green";
+                yearlyCostFactor.innerText = "a savings";
+            }
+            yearlyCostDifference.innerText = Math.round(Math.abs(savings) * 100) / 100;
+            
         }
         // https://photon-energy-hack.herokuapp.com/dashboard.html?metrics=fahrenheit&m=Mar&g=1&t2=75&t1=36
         function loadData() {
@@ -163,6 +178,86 @@
         google.charts.load('current', { 'packages': ['corechart','bar'] });
         google.charts.setOnLoadCallback(drawChart);
 
+        function getPriceData(){
+            var p;
+            var g = getParameterByName("g");
+            //if garage 1
+            if (g == "1") {
+                p = [
+                    ['Month', 'Price', 'Estimated Price'],
+                    ['January', 9856.452, calcPrice(avgTemps["Jan"],0.000002526)],
+                    ['February', 6678.77, calcPrice(avgTemps["Feb"],0.000002555)],
+                    ['March', 2895.999, calcPrice(avgTemps["Mar"],0.000002679)],
+                    ['April', 4426.686, calcPrice(avgTemps["Apr"], 0.000002607)],
+                    ['May', 1120.183, calcPrice(avgTemps["May"], 0.000003103)],
+                    ['June', 260.424, calcPrice(avgTemps["Jun"],0.000021702)],
+                    ['July', 260.612, calcPrice(avgTemps["Jul"],0.000023692)],
+                    ['August', 268.058, calcPrice(avgTemps["Aug"],0.000019147)],
+                    ['September', 292.92, calcPrice(avgTemps["Sep"],0.000012205)],
+                    ['October', 401.57, calcPrice(avgTemps["Oct"],0.000006178)],
+                    ['November', 3543.372, calcPrice(avgTemps["Nov"],0.000002709)],
+                    ['December', 5457.442, calcPrice(avgTemps["Dec"],0.000002567)]
+                ];
+            }
+
+            //if garage 2
+            if (g == "2") {
+                p = [
+                    ['Month', 'Price', 'Estimated Price'],
+                    ['January', 25527.62, calcPrice(avgTemps["Jan"],0.00000330626)],
+                    ['February', 17094.44, calcPrice(avgTemps["Feb"],0.00000332577)],
+                    ['March', 20685.33, calcPrice(avgTemps["Mar"],0.00000331549)],
+                    ['April', 11165.9, calcPrice(avgTemps["Apr"], 0.0000033683)],
+                    ['May', 3163.33, calcPrice(avgTemps["May"], 0.00000362352)],
+                    ['June', 320.75, calcPrice(avgTemps["Jun"],0.0000534583)],
+                    ['July', 320.75, calcPrice(avgTemps["Jul"],0.000061948)],
+                    ['August', 332.75, calcPrice(avgTemps["Aug"],0.0000277183)],
+                    ['September', 805.6, calcPrice(avgTemps["Sep"],0.00000513121)],
+                    ['October', 3854.2, calcPrice(avgTemps["Oct"],0.00000345978)],
+                    ['November', 10903.56, calcPrice(avgTemps["Nov"],0.0000031678)],
+                    ['December', 13320.92, calcPrice(avgTemps["Dec"],0.00000307429)]
+                ];
+            }
+
+            //if garage 3
+            if (g == "3") {
+                p = [
+                    ['Month', 'Price', 'Estimated Price'],
+                    ['January', 18979.75, calcPrice(avgTemps["Jan"],0.00000331988)],
+                    ['February', 13761.7, calcPrice(avgTemps["Feb"],0.00000334022)],
+                    ['March', 12830.49, calcPrice(avgTemps["Mar"],0.00000334563)],
+                    ['April', 10518.72, calcPrice(avgTemps["Apr"], 0.00000337355)],
+                    ['May', 3714.14, calcPrice(avgTemps["May"], 0.00000356786)],
+                    ['June', 563.37, calcPrice(avgTemps["Jun"],0.00000704213)],
+                    ['July', 384.25, calcPrice(avgTemps["Jul"],0.0000137232)],
+                    ['August', 378.28, calcPrice(avgTemps["Aug"],0.0000145492)],
+                    ['September', 727.31, calcPrice(avgTemps["Sep"],0.0000054685)],
+                    ['October', 2204.78, calcPrice(avgTemps["Oct"],0.00000371175)],
+                    ['November', 7628.17, calcPrice(avgTemps["Nov"],0.00000330367)],
+                    ['December', 10976.27, calcPrice(avgTemps["Dec"],0.00000326383)]
+                ];
+            }
+
+            //if garage 4
+            if (g == "4") {
+                p = [
+                    ['Month', 'Price', 'Estimated Price'],
+                    ['January', 25429.6, calcPrice(avgTemps["Jan"],0.00000330641)],
+                    ['February', 16646.81, calcPrice(avgTemps["Feb"],0.00000332737)],
+                    ['March', 17081.38, calcPrice(avgTemps["Mar"],0.00000332581)],
+                    ['April', 10408.48, calcPrice(avgTemps["Apr"], 0.00000337499)],
+                    ['May', 2009.25, calcPrice(avgTemps["May"], 0.00000385653)],
+                    ['June', 0, calcPrice(avgTemps["Jun"],0.00000385653)],
+                    ['July', 0, calcPrice(avgTemps["Jul"],0.00000385653)],
+                    ['August', 0, calcPrice(avgTemps["Aug"],0.00000385653)],
+                    ['September', 306.52, calcPrice(avgTemps["Sep"],0.00007663)],
+                    ['October', 1466.18, calcPrice(avgTemps["Oct"],0.00000400596)],
+                    ['November', 9905.16, calcPrice(avgTemps["Nov"],0.00000322224)],
+                    ['December', 13939.49, calcPrice(avgTemps["Dec"],0.00000305624)]
+                ];
+            }
+            return p;
+        }
 
         function getData() {
             var d;
@@ -247,7 +342,6 @@
 
         function drawMonthChart() {
             var data = google.visualization.arrayToDataTable(getMonthData());
-
             var options = {
                 chart: {
                     title: 'Montly Savings',
@@ -263,6 +357,7 @@
         function drawChart() {
             var d = getData();
             var data = google.visualization.arrayToDataTable(d);
+            var pricedata = google.visualization.arrayToDataTable(getPriceData());
             // var d2 = getPriceData();
             // var data2 = google.visualization.arrayToDataTable(d2);
             var options = {
@@ -271,10 +366,16 @@
                 vAxis: { minValue: 0 }
             };
 
+            var optionsprice = {
+                title: 'Total Cost',
+                hAxis: { title: 'Month', titleTextStyle: { color: '#333' } },
+                vAxis: { minValue: 0 }
+            };
+
             var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
             var chart1 = new google.visualization.AreaChart(document.getElementById('chart_div1'));
             chart.draw(data, options);
-            chart1.draw(data, options);
+            chart1.draw(pricedata, optionsprice);
             drawMonthChart();
         }
         function calc(t1) {
@@ -302,7 +403,7 @@
             var qs = 0.4 * A * deltaT;
             var qv = Qdot * 0.24 * 0.075 * deltaT * 60 * 30 * 24;
             var btu = (qs + qv) / 0.85;
-            return btu;
+            return btu*1.5;
         }
 
         function calcPrice(t1, rate) {
