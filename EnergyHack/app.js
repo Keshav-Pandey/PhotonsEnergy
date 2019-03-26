@@ -20,6 +20,12 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/',function(req,res) {
+    res.sendFile(__dirname+'/public/index.html');
+});
+app.get('/pat.js', function (req, res) {
+    res.sendFile(__dirname, 'public/javascripts/pat.js')
+})
 app.use('/garage', garageARouter);
 app.use('/weather', weatherRouter);
 
