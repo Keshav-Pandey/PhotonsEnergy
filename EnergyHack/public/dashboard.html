@@ -256,7 +256,18 @@
                     ['December', 13939.49, calcPrice(avgTemps["Dec"],0.00000305624)]
                 ];
             }
+            totalPrice();
             return p;
+        }
+
+        function totalPrice() {
+            total = 0;
+            old = 0;
+            for (var m in avgTemps){
+                total += (calcPrice(avgTemps[m],gar1[m]["Rate"]));
+                old += gar1[m]["Amount"];
+            }
+            updateYearlyEstimates(old - total);
         }
 
         function getData() {
@@ -403,7 +414,7 @@
             var qs = 0.4 * A * deltaT;
             var qv = Qdot * 0.24 * 0.075 * deltaT * 60 * 30 * 24;
             var btu = (qs + qv) / 0.85;
-            return btu*1.5;
+            return btu*1.6;
         }
 
         function calcPrice(t1, rate) {
