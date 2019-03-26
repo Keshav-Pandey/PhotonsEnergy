@@ -101,20 +101,20 @@
         ];
 
         //if garage 2
-        var d = [
+        var d2 = [
           ['Month', 'BTU', 'BTUNew'],
-          ['January',  7721000000, 25527],
-          ['February',  5140000000, 17094],
-          ['March',  6239000000, 20685],
-          ['April',  3315000000, 11165],
-          ['May',  873000000, 3163],
-          ['June',  6000000, 320],
-          ['July',  5000000, 309],
-          ['August',  12000000, 332],
-          ['September',  157000000, 805],
-          ['October',  1114000000, 3854],
-          ['November',  3442000000, 10903],
-          ['December',  4333000000, 13320]
+          ['January',  7721000000, calc(avgTemps["Jan"])],
+          ['February',  5140000000, calc(avgTemps["Feb"])],
+          ['March',  6239000000, calc(avgTemps["Mar"])],
+          ['April',  3315000000, calc(avgTemps["Apr"])],
+          ['May',  873000000, calc(avgTemps["May"])],
+          ['June',  6000000, calc(avgTemps["Jun"])],
+          ['July',  5000000, calc(avgTemps["Jul"])],
+          ['August',  12000000, calc(avgTemps["Aug"])],
+          ['September',  157000000, calc(avgTemps["Sep"])],
+          ['October',  1114000000, calc(avgTemps["Oct"])],
+          ['November',  3442000000, calc(avgTemps["Nov"])],
+          ['December',  4333000000, calc(avgTemps["Dec"])]
         ];
 
         //if garage 3
@@ -160,8 +160,11 @@
             Qdot = 77157.75;
             A = 111039.9164;
         }
-        var qs = 0.4 * A * (t2 - t1);
-        var qv = Qdot * 0.24 * 0.075 * (t2 - t1) * 60 * 30 * 24;
+        deltaT = t2 - t1;
+        if(deltaT < 0)
+            deltaT = 0;
+        var qs = 0.4 * A * deltaT;
+        var qv = Qdot * 0.24 * 0.075 * deltaT * 60 * 30 * 24;
         var btu = (qs + qv) / 0.85;
         return btu;
       }
@@ -176,6 +179,6 @@
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
 
-            var avgTemps = JSON.parse("{\"Jan\": \"25.5\",\"Feb\": \"38.8\",\"Mar\": \"34.8\",\"Apr\": \"46.3\",\"May\": \"69\",\"Jun\": \"70.8\",\"Jul\": \"73.5\",\"Aug\": \"73\",\"Sep\": \"69.7\",\"Oct\": \"53.4\",\"Nov\": \"37.3\",\"Dec\": \"35.3\"}");
+        var avgTemps = JSON.parse("{\"Jan\": \"25.5\",\"Feb\": \"38.8\",\"Mar\": \"34.8\",\"Apr\": \"46.3\",\"May\": \"69\",\"Jun\": \"70.8\",\"Jul\": \"73.5\",\"Aug\": \"73\",\"Sep\": \"69.7\",\"Oct\": \"53.4\",\"Nov\": \"37.3\",\"Dec\": \"35.3\"}");
     </script>
 </body>
