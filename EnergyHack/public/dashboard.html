@@ -1,5 +1,4 @@
 <!Doctype html>
-<html>
 
 <head>
     <!-- Required meta tags -->
@@ -8,51 +7,50 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Photons</title>
 </head>
 
-<body>
-    <!-- Image and text -->
-    <nav class="navbar bg-dark">
-        <div class="container-fluid justify-content-md-center">
-            <a class="navbar-brand " href="index.html">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Port_Authority_Allegheny_County_Logo.svg"
-                    height="50" class="d-inline-block align-top" alt="">
-            </a>
-        </div>
-    </nav>
+<body onload="loadData()">
+<!-- Image and text -->
+<nav class="navbar bg-dark">
+    <div class="container-fluid justify-content-md-center">
+        <a class="navbar-brand " href="index.html">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Port_Authority_Allegheny_County_Logo.svg"
+                 height="50" class="d-inline-block align-top" alt="">
+        </a>
+    </div>
+</nav>
 
-    <div class="container" style="padding: 2%">
-        <div class="row">
-            <div class="col-4 border">
-                <div class="inline">
-                    Indoor Temperature:
-                </div>
-                <div class="inline">
-                    <h1 id="indoorTemp">30°F</h1>
-                </div>
-                <div class="inline">
-                    Outdoor Temperature:
-                </div>
-                <div class="inline">
-                    <h1 id="outdoorTemp">23°F</h1>
-                </div>
-                <div class="inline">
-                    <h4>Comfort Level:</h4>
-                    <h4 style="color: red">Low</h4>
-                </div>
+<div class="container" style="padding: 2%">
+    <div class="row">
+        <div class="col-4 border">
+            <div class="inline">
+                Indoor Temperature:
             </div>
-            <div class="col-6 border">
-                <div id="chart_div0" style="width: 100%; height: 400px;"></div>
+            <div class="inline">
+                <h1 id="indoorTemp">30°F</h1>
             </div>
-            <div class="col border">
-                <h4>Savings:</h4>
-                <h5>Having this setting will cost you $2300.</h5>
-                <h6 id="monthSavings" style="color: green">This will result in a savings of $1000 for this month.</h6>
+            <div class="inline">
+                Outdoor Temperature:
             </div>
+            <div class="inline">
+                <h1 id="outdoorTemp">23°F</h1>
+            </div>
+            <div class="inline">
+                <h4>Comfort Level:</h4>
+                <h4 style="color: red" id="comfort level">Low</h4>
+            </div>
+        </div>
+        <div class="col-6 border">
+            <div id="chart_div0" style="width: 100%; height: 400px;"></div>
+        </div>
+        <div class="col border">
+            <h4>Savings:</h4>
+            <h5>Having this setting will cost you $2300.</h5>
+            <h6 id = "monthSavings" style="color: green">This will result in a savings of $1000 for this month.</h6>
         </div>
 
         <div class="row justify-content-md-center">
@@ -70,17 +68,75 @@
             </div>
         </div>
     </div>
+</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <!--Loading parameters-->
+    <script type="text/javascript">
+        // https://photon-energy-hack.herokuapp.com/dashboard.html?metrics=fahrenheit&m=Mar&g=1&t2=75&t1=36
+        function loadData() {
+            var metric = '°';
+            if (getParameterByName("metrics") == fahrenheit) {
+                metric = metric + 'F';
+            } else {
+                metric = metric + 'C';
+            }
+            var indoorTemp = getParameterByName("t2");
+            document.getElementById("indoorTemp").innerText = indoorTemp + metric;
+            document.getElementById("outdoorTemp").innerText = getParameterByName("t1") + metric;
+            var month = getParameterByName("m");
+            var comfortLevel = document.getElementById("comfort level");
+            switch (month) {
+                case "May":
+                case "Jun":
+                case "Jul":
+                case "Aug":
+                case "Sep":
+                    if (indoorTemp < 75 || indoorTemp > 80.5) {
+                        if (indoorTemp > 70 || indoorTemp < 82) {
+                            comfortLevel.innerText = "Medium";
+                            comfortLevel.setAttribute("color", "orange");
+                            break;
+                        }
+                        comfortLevel.innerText = "Low";
+                        comfortLevel.setAttribute("color", "red");
+                    } else {
+                        comfortLevel.innerText = "High";
+                        comfortLevel.setAttribute("color", "green");
+                    }
+                    break;
+                case "Oct":
+                case "Nov":
+                case "Dec":
+                case "Jan":
+                case "Feb":
+                case "Mar":
+                case "Apr":
+                    if (indoorTemp < 68.5 || indoorTemp > 75) {
+                        if (indoorTemp > 62 || indoorTemp < 80) {
+                            comfortLevel.innerText = "Medium";
+                            comfortLevel.setAttribute("color", "orange");
+                            break;
+                        }
+                        comfortLevel.innerText = "Low";
+                        comfortLevel.setAttribute("color", "red");
+                    } else {
+                        comfortLevel.innerText = "High";
+                        comfortLevel.setAttribute("color", "green");
+                    }
+                    break;
+            }
+        }
+    </script>
 
     <!--Chart script-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -88,7 +144,7 @@
         google.charts.load('current', { 'packages': ['corechart','bar'] });
         google.charts.setOnLoadCallback(drawChart);
 
-        
+
         function getData() {
             var d;
             var g = getParameterByName("g");
@@ -181,20 +237,19 @@
         }
 
         function drawMonthChart() {
-        var data = google.visualization.arrayToDataTable(getMonthData());
+            var data = google.visualization.arrayToDataTable(getMonthData());
 
-        var options = {
-          chart: {
-            title: 'Montly Savings',
-            subtitle: 'Savings on gas usage for the month',
-          },
-          bars: 'vertical' // Required for Material Bar Charts.
-        };
+            var options = {
+                chart: {
+                    title: 'Montly Savings',
+                    subtitle: 'Savings on gas usage for the month',
+                },
+                bars: 'vertical' // Required for Material Bar Charts.
+            };
 
-        var chart = new google.charts.Bar(document.getElementById('chart_div0'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
+            var chart = new google.charts.Bar(document.getElementById('chart_div0'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
 
         function drawChart() {
             var d = getData();
@@ -239,34 +294,34 @@
             var qv = Qdot * 0.24 * 0.075 * deltaT * 60 * 30 * 24;
             var btu = (qs + qv) / 0.85;
             return btu;
-      }
-
-      function calcPrice(t1, rate) {
-        return calc(t1) * rate;
-      }
-
-      function getMonthData() {
-        var m = getParameterByName("m");
-        var g = getParameterByName("g");
-        var gar;
-        if(g == "1"){
-            gar = gar1[m];
-        } else if(g == "2"){
-            gar = gar2[m];
-        } else if(g == "3"){
-            gar = gar3[m];
-        } else if(g == "4"){
-            gar = gar4[m];
         }
-        //if garage 1
-        var d = [
-          ['Month', 'MBTU' , 'Estimated MBTU', 'Price ($)', 'Estimated Price ($)'],
-          [m,  gar["BTU"]/1000000, calc(avgTemps[m])/1000000, gar["Amount"], calcPrice(avgTemps[m],gar["Rate"])]
-        ];
-        return d;
-      }
 
-      function getParameterByName(name) {
+        function calcPrice(t1, rate) {
+            return calc(t1) * rate;
+        }
+
+        function getMonthData() {
+            var m = getParameterByName("m");
+            var g = getParameterByName("g");
+            var gar;
+            if(g == "1"){
+                gar = gar1[m];
+            } else if(g == "2"){
+                gar = gar2[m];
+            } else if(g == "3"){
+                gar = gar3[m];
+            } else if(g == "4"){
+                gar = gar4[m];
+            }
+            //if garage 1
+            var d = [
+                ['Month', 'MBTU' , 'Estimated MBTU', 'Price ($)', 'Estimated Price ($)'],
+                [m,  gar["BTU"]/1000000, calc(avgTemps[m])/1000000, gar["Amount"], calcPrice(avgTemps[m],gar["Rate"])]
+            ];
+            return d;
+        }
+
+        function getParameterByName(name) {
             url = window.location.href;
             name = name.replace(/[\[\]]/g, '\\$&');
             var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
