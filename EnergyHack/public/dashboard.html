@@ -85,7 +85,7 @@
         // https://photon-energy-hack.herokuapp.com/dashboard.html?metrics=fahrenheit&m=Mar&g=1&t2=75&t1=36
         function loadData() {
             var metric = '°';
-            if (getParameterByName("metrics") == fahrenheit) {
+            if (getParameterByName("metrics") == "fahrenheit") {
                 metric = metric + 'F';
             } else {
                 metric = metric + 'C';
@@ -104,14 +104,14 @@
                     if (indoorTemp < 75 || indoorTemp > 80.5) {
                         if (indoorTemp > 70 || indoorTemp < 82) {
                             comfortLevel.innerText = "Medium";
-                            comfortLevel.setAttribute("color", "orange");
+                            comfortLevel.style.color = "orange";
                             break;
                         }
                         comfortLevel.innerText = "Low";
-                        comfortLevel.setAttribute("color", "red");
+                        comfortLevel.style.color = "red";
                     } else {
                         comfortLevel.innerText = "High";
-                        comfortLevel.setAttribute("color", "green");
+                        comfortLevel.style.color = "green";
                     }
                     break;
                 case "Oct":
@@ -124,14 +124,14 @@
                     if (indoorTemp < 68.5 || indoorTemp > 75) {
                         if (indoorTemp > 62 || indoorTemp < 80) {
                             comfortLevel.innerText = "Medium";
-                            comfortLevel.setAttribute("color", "orange");
+                            comfortLevel.style.color = "orange";
                             break;
                         }
                         comfortLevel.innerText = "Low";
-                        comfortLevel.setAttribute("color", "red");
+                        comfortLevel.style.color = "red";
                     } else {
                         comfortLevel.innerText = "High";
-                        comfortLevel.setAttribute("color", "green");
+                        comfortLevel.style.color = "green";
                     }
                     break;
             }
