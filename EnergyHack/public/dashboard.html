@@ -56,13 +56,13 @@
         <div class="row justify-content-md-center">
             <h1>Impact of keeping this indoor temperature throughout the year:</h1>
             <h4 id="yearSavings" style="color:green">This will result in <span id="yearly cost factor">a savings</span> of $<span id="yearly cost difference">10000</span> per year</h4>
-            <div class="container" style="align-content: center; margin-left:10%">
+            <div  style="align-content: center;">
                 <div class="form-check-inline">
-                    <div class="col border">
-                        <div id="chart_div" style="width: 100%; height: 400px;"></div>
+                    <div class="border">
+                        <div id="chart_div" style="width: 550px; height: 400px;"></div>
                     </div>
-                    <div class="col border">
-                        <div id="chart_div1" style="width: 100%; height: 400px;"></div>
+                    <div class="border">
+                        <div id="chart_div1" style="width: 550px; height: 400px;"></div>
                     </div>
                 </div>
             </div>
@@ -184,7 +184,7 @@
             //if garage 1
             if (g == "1") {
                 p = [
-                    ['Month', 'Price', 'Estimated Price'],
+                    ['Month', 'Price', 'E.Price'],
                     ['January', 9856.452, calcPrice(avgTemps["Jan"],0.000002526)],
                     ['February', 6678.77, calcPrice(avgTemps["Feb"],0.000002555)],
                     ['March', 2895.999, calcPrice(avgTemps["Mar"],0.000002679)],
@@ -203,7 +203,7 @@
             //if garage 2
             if (g == "2") {
                 p = [
-                    ['Month', 'Price', 'Estimated Price'],
+                    ['Month', 'Price', 'E.Price'],
                     ['January', 25527.62, calcPrice(avgTemps["Jan"],0.00000330626)],
                     ['February', 17094.44, calcPrice(avgTemps["Feb"],0.00000332577)],
                     ['March', 20685.33, calcPrice(avgTemps["Mar"],0.00000331549)],
@@ -222,7 +222,7 @@
             //if garage 3
             if (g == "3") {
                 p = [
-                    ['Month', 'Price', 'Estimated Price'],
+                    ['Month', 'Price', 'E.Price'],
                     ['January', 18979.75, calcPrice(avgTemps["Jan"],0.00000331988)],
                     ['February', 13761.7, calcPrice(avgTemps["Feb"],0.00000334022)],
                     ['March', 12830.49, calcPrice(avgTemps["Mar"],0.00000334563)],
@@ -241,7 +241,7 @@
             //if garage 4
             if (g == "4") {
                 p = [
-                    ['Month', 'Price', 'Estimated Price'],
+                    ['Month', 'Price', 'E.Price'],
                     ['January', 25429.6, calcPrice(avgTemps["Jan"],0.00000330641)],
                     ['February', 16646.81, calcPrice(avgTemps["Feb"],0.00000332737)],
                     ['March', 17081.38, calcPrice(avgTemps["Mar"],0.00000332581)],
@@ -265,7 +265,7 @@
             //if garage 1
             if (g == "1") {
                 d = [
-                    ['Month', 'BTU', 'Estimated BTU'],
+                    ['Month', 'BTU', 'E.BTU'],
                     ['January', 3902000000, calc(avgTemps["Jan"])],
                     ['February', 2614000000, calc(avgTemps["Feb"])],
                     ['March', 1081000000, calc(avgTemps["Mar"])],
@@ -284,7 +284,7 @@
             //if garage 2
             if (g == "2") {
                 d = [
-                    ['Month', 'BTU', 'Estimated BTU'],
+                    ['Month', 'BTU', 'E.BTU'],
                     ['January', 7721000000, calc(avgTemps["Jan"])],
                     ['February', 5140000000, calc(avgTemps["Feb"])],
                     ['March', 6239000000, calc(avgTemps["Mar"])],
@@ -303,7 +303,7 @@
             //if garage 3
             if (g == "3") {
                 d = [
-                    ['Month', 'BTU', 'Estimated BTU'],
+                    ['Month', 'BTU', 'E.BTU'],
                     ['January', 5717000000, calc(avgTemps["Jan"])],
                     ['February', 4120000000, calc(avgTemps["Feb"])],
                     ['March', 3835000000, calc(avgTemps["Mar"])],
@@ -322,7 +322,7 @@
             //if garage 4
             if (g == "4") {
                 d = [
-                    ['Month', 'BTU', 'Estimated BTU'],
+                    ['Month', 'BTU', 'E.BTU'],
                     ['January', 7691000000, calc(avgTemps["Jan"])],
                     ['February', 5003000000, calc(avgTemps["Feb"])],
                     ['March', 5136000000, calc(avgTemps["Mar"])],
@@ -427,7 +427,7 @@
             var newPrice = calcPrice(getParameterByName("t1"),gar["Rate"]);
             //if garage 1
             var d = [
-                ['Month', 'MBTU' , 'Estimated MBTU', 'Price ($)', 'Estimated Price ($)'],
+                ['Month', 'MBTU (Prev Year)' , 'Estimated MBTU', 'Price ($) (Prev Year)', 'Estimated Price ($)'],
                 [m,  gar["BTU"]/1000000, calc(getParameterByName("t1"))/1000000, oldPrice, newPrice]
             ];
             updateCostEstimes(oldPrice, newPrice);
