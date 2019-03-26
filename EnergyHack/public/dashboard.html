@@ -251,8 +251,8 @@
         }
         //if garage 1
         var d = [
-          ['Month', 'BTU' , 'BTUNew', 'Price', 'PriceNew'],
-          [m,  gar["BTU"], calc(avgTemps[m]), gar["Amount"], calcPrice(avgTemps[m],gar["Rate"])]
+          ['Month', 'MBTU' , 'Estimated MBTU', 'Price ($)', 'Estimated Price ($)'],
+          [m,  gar["BTU"]/1000000, calc(avgTemps[m])/1000000, gar["Amount"], calcPrice(avgTemps[m],gar["Rate"])]
         ];
         return d;
       }
