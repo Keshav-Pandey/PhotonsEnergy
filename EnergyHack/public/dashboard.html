@@ -323,7 +323,7 @@
                 gar = gar4[m];
             }
             var oldPrice = gar["Amount"];
-            var newPrice = calcPrice(avgTemps[m],gar["Rate"]);
+            var newPrice = calcPrice(getParameterByName(t1),gar["Rate"]);
             //if garage 1
             var d = [
                 ['Month', 'MBTU' , 'Estimated MBTU', 'Price ($)', 'Estimated Price ($)'],
