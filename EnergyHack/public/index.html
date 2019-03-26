@@ -28,7 +28,7 @@
   <div class="container" style="align-content:center; margin: 5%">
     <div class="card">
       <div class="card-body">
-        <form>
+        <form method="GET" action="dashboard.html">
           <h1 style="text-align: center">Garage thermal setpoint</h1>
           <div class="form-group row">
               <div class="form-check form-check-inline" style="margin-left: 2.5% ">
@@ -53,7 +53,7 @@
             <div class="form-group col-md-4" style="margin:1%">
               <i class="fas fa-calendar-day"></i>
               <label class="col-sm-1" for="month">Month</label>
-              <select id="month" class="form-control col-sm-4">
+              <select id="month" class="form-control col-sm-4" name="m">
                 <option>January</option>
                 <option>February</option>
                 <option selected>March</option>
@@ -71,7 +71,7 @@
             <div class="form-group col-md-4" style="margin:1%">
                 <i class="fas fa-warehouse"></i>
                 <label class="col-sm-1" for="garage">Garage</label>
-                <select id="garage" class="form-control col-sm-4">
+                <select id="garage" class="form-control col-sm-4" name="g">
                   <option selected>Garage 1</option>
                   <option>Garage 2</option>
                   <option>Garage 3</option>
@@ -83,11 +83,11 @@
           <div class="form-group row">
             <label for="indoorTemperature" class="col-sm-2 col-form-label">Setpoint temperature</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="indoorTemperature" placeholder="Enter temperature">
+              <input type="text" class="form-control" id="indoorTemperature" placeholder="Enter temperature" name="t1">
             </div>
             <label for="outdoorTemperature" class="col-sm-2 col-form-label">Outside temperature</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="outdoorTemperature" placeholder="Enter temperature">
+              <input type="text" class="form-control" id="outdoorTemperature" placeholder="Enter temperature" name="t2">
               
             </div>
             <div class="col-sm-1">

@@ -86,18 +86,18 @@
         //if garage 1
         var d = [
           ['Month', 'BTU', 'BTUNew'],
-          ['January',  3902000000, 25527],
-          ['February',  2614000000, 17094],
-          ['March',  1081000000, 20685],
-          ['April',  1698000000, 11165],
-          ['May',  361000000, 3163],
-          ['June',  12000000, 320],
-          ['July',  11000000, 309],
-          ['August',  14000000, 332],
-          ['September',  24000000, 805],
-          ['October',  65000000, 3854],
-          ['November',  1308000000, 10903],
-          ['December',  2126000000, 13320]
+          ['January',  3902000000, calc(avgTemps["Jan"])],
+          ['February',  2614000000, calc(avgTemps["Feb"])],
+          ['March',  1081000000, calc(avgTemps["Mar"])],
+          ['April',  1698000000, calc(avgTemps["Apr"])],
+          ['May',  361000000, calc(avgTemps["May"])],
+          ['June',  12000000, calc(avgTemps["Jun"])],
+          ['July',  11000000, calc(avgTemps["Jul"])],
+          ['August',  14000000, calc(avgTemps["Aug"])],
+          ['September',  24000000, calc(avgTemps["Sep"])],
+          ['October',  65000000, calc(avgTemps["Oct"])],
+          ['November',  1308000000, calc(avgTemps["Nov"])],
+          ['December',  2126000000, calc(avgTemps["Dec"])]
         ];
 
         //if garage 2
@@ -141,6 +141,41 @@
         chart.draw(data, options);
       }
 
+      function calc(t1) {
+        var t2 = Number(getParameterByName("t2"));
+        // var t1 = getParameterByName("t1");
+        t1 = Number(t1);
+        var g = getParameterByName("g");
+        var Qdot, A;
+        if(g == "1"){
+            Qdot = 19042.24;
+            A = 111039.9164;
+        } else if(g == "2"){
+            Qdot =  79923.71;
+            A = 111039.9164;
+        } else if(g == "3"){
+            Qdot = 58219.51;
+            A = 111039.9164;
+        } else if(g == "4"){
+            Qdot = 77157.75;
+            A = 111039.9164;
+        }
+        var qs = 0.4 * A * (t2 - t1);
+        var qv = Qdot * 0.24 * 0.075 * (t2 - t1) * 60 * 30 * 24;
+        var btu = (qs + qv) / 0.85;
+        return btu;
+      }
 
+      function getParameterByName(name) {
+            url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+            var avgTemps = JSON.parse("{\"Jan\": \"25.5\",\"Feb\": \"38.8\",\"Mar\": \"34.8\",\"Apr\": \"46.3\",\"May\": \"69\",\"Jun\": \"70.8\",\"Jul\": \"73.5\",\"Aug\": \"73\",\"Sep\": \"69.7\",\"Oct\": \"53.4\",\"Nov\": \"37.3\",\"Dec\": \"35.3\"}");
     </script>
 </body>
