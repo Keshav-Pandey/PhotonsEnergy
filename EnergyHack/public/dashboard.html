@@ -14,7 +14,7 @@
     <title>Photons</title>
 </head>
 
-<body>
+<body onload="loadData()">
     <!-- Image and text -->
     <nav class="navbar bg-dark">
         <div class="container-fluid justify-content-md-center">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="inline">
                     <h4>Comfort Level:</h4>
-                    <h4 style="color: red">Low</h4>
+                    <h4 style="color: red" id="comfort level">Low</h4>
                 </div>
             </div>
             <div class="col-6 border">
@@ -50,7 +50,7 @@
             </div>
             <div class="col border">
                 <h4>Savings:</h4>
-                <h5>Having this setting will cost you $2300.</h5>                
+                <h5>Having this setting will cost you $2300.</h5>
                 <h6 id = "monthSavings" style="color: green">This will result in a savings of $1000 for this month.</h6>
             </div>
         </div>
@@ -61,7 +61,7 @@
                 <img id="totalImpact"
                     src="https://2aih25gkk2pi65s8wfa8kzvi-wpengine.netdna-ssl.com/ged/files/2017/02/Line-graph-e1487040553537.jpg">
             </div>
-        
+
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -74,6 +74,63 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <!--Loading parameters-->
+    <script type="text/javascript">
+        // https://photon-energy-hack.herokuapp.com/dashboard.html?metrics=fahrenheit&m=Mar&g=1&t2=75&t1=36
+        function loadData() {
+            var metric = '°';
+            if (getParameterByName("metrics") == fahrenheit) {
+                metric = metric + 'F';
+            } else {
+                metric = metric + 'C';
+            }
+            var indoorTemp = getParameterByName("t2");
+            document.getElementById("indoorTemp").innerText = indoorTemp + metric;
+            document.getElementById("outdoorTemp").innerText = getParameterByName("t1") + metric;
+            var month = getParameterByName("m");
+            var comfortLevel = document.getElementById("comfort level");
+            switch (month) {
+                case "May":
+                case "Jun":
+                case "Jul":
+                case "Aug":
+                case "Sep":
+                    if (indoorTemp < 75 || indoorTemp > 80.5) {
+                        if (indoorTemp > 70 || indoorTemp < 82) {
+                            comfortLevel.innerText = "Medium";
+                            comfortLevel.setAttribute("color", "orange");
+                            break;
+                        }
+                        comfortLevel.innerText = "Low";
+                        comfortLevel.setAttribute("color", "red");
+                    } else {
+                        comfortLevel.innerText = "High";
+                        comfortLevel.setAttribute("color", "green");
+                    }
+                    break;
+                case "Oct":
+                case "Nov":
+                case "Dec":
+                case "Jan":
+                case "Feb":
+                case "Mar":
+                case "Apr":
+                    if (indoorTemp < 68.5 || indoorTemp > 75) {
+                        if (indoorTemp > 62 || indoorTemp < 80) {
+                            comfortLevel.innerText = "Medium";
+                            comfortLevel.setAttribute("color", "orange");
+                            break;
+                        }
+                        comfortLevel.innerText = "Low";
+                        comfortLevel.setAttribute("color", "red");
+                    } else {
+                        comfortLevel.innerText = "High";
+                        comfortLevel.setAttribute("color", "green");
+                    }
+                    break;
+            }
+        }
+    </script>
 
     <!--Chart script-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -129,7 +186,7 @@
 
         var data = google.visualization.arrayToDataTable(d);
 
-        
+
 
         var options = {
           title: 'Gas Usage',
