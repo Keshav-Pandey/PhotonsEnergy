@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <title>Photons</title>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -28,58 +29,59 @@
   <div class="container" style="align-content:center; margin: 5%">
     <div class="card">
       <div class="card-body">
-        <form method="GET" action="dashboard.html">
+        <div class="container">
+        <form>
           <h1 style="text-align: center">Garage thermal setpoint</h1>
           <div class="form-group row">
-              <div class="form-check form-check-inline" style="margin-left: 2.5% ">
-                <i class="fas fa-thermometer-half"></i>
-                &nbsp;Metrics:
-              </div>
-              <div class="form-check form-check-inline">
-  
-                <input class="form-check-input" type="radio" name="metrics" id="far" value="fahrenheit" checked>
-                <label class="form-check-label" for="fahrenheit">
-                  °F
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="metrics" value="celcius">
-                <label class="form-check-label" for="exampleRadios2">
-                  °C
-                </label>
-              </div>
+            <div class="form-check form-check-inline" style="margin-left: 2.5% ">
+              <i class="fas fa-thermometer-half"></i>
+              &nbsp;Metrics:
+            </div>
+            <div class="form-check form-check-inline">
+
+              <input class="form-check-input" type="radio" name="metrics" id="far" value="fahrenheit" checked>
+              <label class="form-check-label" for="fahrenheit">
+                °F
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="metrics" value="celcius">
+              <label class="form-check-label" for="exampleRadios2">
+                °C
+              </label>
+            </div>
           </div>
-          <div class="row">
-            <div class="form-group col-md-4" style="margin:1%">
+          <div class="row"></div>
+            <div class="form-group col-md-6 form-check-inline" style="margin:1%">
               <i class="fas fa-calendar-day"></i>
-              <label class="col-sm-1" for="month">Month</label>
-              <select id="month" class="form-control col-sm-4" name="m">
-                <option>January</option>
-                <option>February</option>
-                <option selected>March</option>
-                <option>April</option>
-                <option>May</option>
-                <option>June</option>
-                <option>July</option>
-                <option>August</option>
-                <option>September</option>
-                <option>October</option>
-                <option>November</option>
-                <option>December</option>
+              <label class="col-sm-2" for="month">Month</label>
+              <select id="month" class="form-control col-sm-6">
+                <option value="Jan">January</option>
+                <option value="Feb">February</option>
+                <option value="Mar" selected>March</option>
+                <option value="Apr">April</option>
+                <option value="May">May</option>
+                <option value="Jun">June</option>
+                <option value="Jul">July</option>
+                <option value="Aug">August</option>
+                <option value="Sep">September</option>
+                <option value="Oct">October</option>
+                <option value="Nov">November</option>
+                <option value="Dec">December</option>
               </select>
             </div>
-            <div class="form-group col-md-4" style="margin:1%">
-                <i class="fas fa-warehouse"></i>
-                <label class="col-sm-1" for="garage">Garage</label>
-                <select id="garage" class="form-control col-sm-4" name="g">
-                  <option selected>Garage 1</option>
-                  <option>Garage 2</option>
-                  <option>Garage 3</option>
-                  <option>Garage 4</option>
-                </select>
-              </div>
+            <div class="form-group col-md-6 form-check-inline" style="margin:1%">
+              <i class="fas fa-warehouse"></i>
+              <label class="col-sm-2" for="garage">Garage</label>
+              <select id="garage" class="form-control col-sm-6">
+                <option value="1" selected>Garage 1</option>
+                <option value="2">Garage 2</option>
+                <option value="3">Garage 3</option>
+                <option value="4">Garage 4</option>
+              </select>
+            </div>
           </div>
-          
+
           <div class="form-group row">
             <label for="indoorTemperature" class="col-sm-2 col-form-label">Setpoint temperature</label>
             <div class="col-sm-3">
@@ -91,13 +93,14 @@
               
             </div>
             <div class="col-sm-1">
-                <input type="button" class="btn btn-warning" value="Current temperature" onclick="getTemp()" />
+              <input type="button" class="btn btn-warning" value="Current temperature" onclick="getTemp()" />
             </div>
           </div>
           <div class="row justify-content-md-center">
             <button type="submit" class="btn btn-primary">Calculate</button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   </div>
